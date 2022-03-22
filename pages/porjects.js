@@ -30,7 +30,7 @@ export default function Projects() {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		axios
-			.post("http://localhost:3002/project", formdata)
+			.post("https://infograph-back.herokuapp.com/project", formdata)
 			.then((res) => {
 				console.log(res);
 			})

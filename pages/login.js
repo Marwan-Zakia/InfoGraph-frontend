@@ -30,7 +30,7 @@ export default class Login extends Component {
 
 	handleSubmit = async (e) => {
 		e.preventDefault();
-		let API = "http://localhost:3002/signin";
+		let API = "https://infograph-back.herokuapp.com/signin";
 		console.log(this.state.email, this.state.password);
 		const response = await superagent
 			.post(`${API}`)
@@ -111,55 +111,64 @@ export default class Login extends Component {
 	render() {
 		return (
 			<>
-				<FormErrors formErrors={this.state.formErrors} />
+				<div className="container">
+					<div className="grid2">
+						<img src="/large_seedingfund-01.png" alt="log" />
+						
+						<h1>Welcome Back</h1>
+					</div>
 
-				<h1>Welcome Back</h1>
-				<div
-					className={`form-group ${this.errorClass(
-						this.state.formErrors.email,
-					)}`}
-				></div>
-				<div
-					className={`form-group ${this.errorClass(
-						this.state.formErrors.password,
-					)}`}
-				></div>
+					<div className="formGroup">
+						<FormErrors formErrors={this.state.formErrors} />
 
-				<div className="form-group">
-					<form>
-						<input
-							type="text"
-							name="name"
-							placeholder="Username"
-							value={this.state.name}
-							onChange={this.handleUserInput}
-						/>
+						<div
+							className={`form-group ${this.errorClass(
+								this.state.formErrors.email,
+							)}`}
+						></div>
+						<div
+							className={`form-group ${this.errorClass(
+								this.state.formErrors.password,
+							)}`}
+						></div>
+						<div className="form">
+							<form>
+								<input
+									type="text"
+									name="name"
+									placeholder="Username"
+									value={this.state.name}
+									onChange={this.handleUserInput}
+								/>
 
-						<input
-							type="email"
-							required
-							name="email"
-							placeholder="Email"
-							value={this.state.email}
-							onChange={this.handleUserInput}
-						/>
-
-						<input
-							type="password"
-							name="password"
-							placeholder="Password"
-							value={this.state.password}
-							onChange={this.handleUserInput}
-						/>
-
-						<button
-							onClick={this.handleSubmit}
-							type="submit"
-							disabled={!this.state.formValid}
-						>
-							Login
-						</button>
-					</form>
+								<input
+									type="email"
+									required
+									name="email"
+									placeholder="Email"
+									value={this.state.email}
+									onChange={this.handleUserInput}
+								/>
+						
+								<input
+									type="password"
+									name="password"
+									placeholder="Password"
+									value={this.state.password}
+									onChange={this.handleUserInput}
+								/>
+							
+								<button
+									onClick={this.handleSubmit}
+									type="submit"
+									disabled={!this.state.formValid}
+								>
+									Login
+								</button>
+								<br />
+							</form>
+						</div>
+					</div>
 				</div>
 			</>
 		);

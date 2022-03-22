@@ -89,68 +89,70 @@ export default function Charts() {
 
 	useEffect(() => {
 		console.log("useEffect");
-		axios.get("http://localhost:3002/project").then(({ data }) => {
-			const approved = data.filter(
-				(item) => item.statusOfFunding === "approved",
-			);
-			const approvedProjectStates = approved.map(
-				(item) => item.statusOfFunding,
-			);
-			const approvedProjectNames = approved.map(
-				(item) => item.projectName,
-			);
+		axios
+			.get("https://infograph-back.herokuapp.com/project")
+			.then(({ data }) => {
+				const approved = data.filter(
+					(item) => item.statusOfFunding === "approved",
+				);
+				const approvedProjectStates = approved.map(
+					(item) => item.statusOfFunding,
+				);
+				const approvedProjectNames = approved.map(
+					(item) => item.projectName,
+				);
 
-			const rejectedProject = data.filter(
-				(item) => item.statusOfFunding === "rejected",
-			);
-			const rejectedProjectStates = rejectedProject.map(
-				(item) => item.statusOfFunding,
-			);
-			const rejectedProjectNames = rejectedProject.map(
-				(item) => item.projectName,
-			);
+				const rejectedProject = data.filter(
+					(item) => item.statusOfFunding === "rejected",
+				);
+				const rejectedProjectStates = rejectedProject.map(
+					(item) => item.statusOfFunding,
+				);
+				const rejectedProjectNames = rejectedProject.map(
+					(item) => item.projectName,
+				);
 
-			const PendingPorjects = data.filter(
-				(item) => item.statusOfFunding === "Pending",
-			);
-			const PendingProjectStates = PendingPorjects.map(
-				(item) => item.statusOfFunding,
-			);
-			const PendingProjectNames = PendingPorjects.map(
-				(item) => item.projectName,
-			);
+				const PendingPorjects = data.filter(
+					(item) => item.statusOfFunding === "Pending",
+				);
+				const PendingProjectStates = PendingPorjects.map(
+					(item) => item.statusOfFunding,
+				);
+				const PendingProjectNames = PendingPorjects.map(
+					(item) => item.projectName,
+				);
 
-			setstates({
-				...states,
-				labels: [...approvedProjectNames],
-				datasets: [
-					{
-						...states.datasets[0],
-						data: [approvedProjectStates.length],
-					},
-				],
+				setstates({
+					...states,
+					labels: [...approvedProjectNames],
+					datasets: [
+						{
+							...states.datasets[0],
+							data: [approvedProjectStates.length],
+						},
+					],
+				});
+				setPending({
+					...Pending,
+					labels: [...PendingProjectNames],
+					datasets: [
+						{
+							...Pending.datasets[0],
+							data: [PendingProjectStates.length],
+						},
+					],
+				});
+				setrejected({
+					...rejected,
+					labels: [...rejectedProjectNames],
+					datasets: [
+						{
+							...rejected.datasets[0],
+							data: [rejectedProjectStates.length],
+						},
+					],
+				});
 			});
-			setPending({
-				...Pending,
-				labels: [...PendingProjectNames],
-				datasets: [
-					{
-						...Pending.datasets[0],
-						data: [PendingProjectStates.length],
-					},
-				],
-			});
-			setrejected({
-				...rejected,
-				labels: [...rejectedProjectNames],
-				datasets: [
-					{
-						...rejected.datasets[0],
-						data: [rejectedProjectStates.length],
-					},
-				],
-			});
-		});
 	}, []);
 
 	return (

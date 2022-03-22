@@ -7,26 +7,10 @@ export default function Home() {
 	const useAuth = useContext(AuthContext);
 	return (
 		<>
-			<Link color="#b57295" href="/login">
-				Login
-			</Link>
-			<Link color="#b57295" href="/signup">
-				signup
-			</Link>
-			<Link color="#b57295" href="/porjects">
-				porjects
-			</Link>
-			<Link color="#b57295" href="/admin">
-				admin
-			</Link>
-			<button
-				onClick={() => {
-					location.reload();
-					useAuth.logout;
-				}}
-			>
-				log out
-			</button>
+			<header className="mid">
+				<h1>Seeding Fund</h1>
+				<h3>The leading site to get your`e project up </h3>
+			</header>
 		</>
 	);
 }

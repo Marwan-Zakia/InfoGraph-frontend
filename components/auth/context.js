@@ -37,7 +37,7 @@ export default class AuthProvider extends React.Component {
 			let data = "";
 			let config = {
 				method: "post",
-				url: "http://localhost:3002/signin",
+				url: "https://infograph-back.herokuapp.com/signin",
 				headers: {
 					Authorization: auth,
 				},

@@ -12,7 +12,7 @@ export default function Admin() {
 
 	useEffect(() => {
 		// const pull = setInterval(() => {
-		axios.get("http://localhost:3002/project").then(({ data }) => {
+		axios.get("https://infograph-back.herokuapp.com/project").then(({ data }) => {
 			setporjectData(data);
 			console.log(data);
 		});
@@ -26,7 +26,7 @@ export default function Admin() {
 		const id = project.id;
 		console.log(id);
 		axios
-			.delete(`http://localhost:3002/project/${id}`)
+			.delete(`https://infograph-back.herokuapp.com/project/${id}`)
 			.then(({ data }) => {
 				console.log(data);
 				setporjectData(
@@ -38,7 +38,7 @@ export default function Admin() {
 	const updateProject = (project) => {
 		const id = project.id;
 		axios
-			.put(`http://localhost:3002/project/${id}`, project)
+			.put(`https://infograph-back.herokuapp.com/project/${id}`, project)
 			.then(({ data }) => {
 				console.log(data);
 				setporjectData([...porjectData, data]);

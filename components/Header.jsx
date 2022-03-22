@@ -1,8 +1,10 @@
 /** @format */
-
+import { useContext } from "react";
+import { AuthContext } from "../components/auth/context";
 import Link from "next/link";
-
 export default function Header() {
+    const useAuth = useContext(AuthContext);
+	
 	return (
 		<>
 			<header className="upper">
@@ -29,7 +31,6 @@ export default function Header() {
 				</Link>
 				<Link href="/">home</Link>
 				<Link href="#">Blog</Link>
-
 				<Link href="#">Portfolio</Link>
 				<Link href="#">Pages</Link>
 				<Link href="#">Feature</Link>
@@ -39,7 +40,16 @@ export default function Header() {
 				<Link href="/porjects">porjects</Link>
 				<Link href="/signup">Signup</Link>
 				<Link href="#">🔍</Link>
+				<button
+					onClick={() => {
+						location.reload();
+						useAuth.logout;
+					}}
+				>
+					log out
+				</button>
 			</header>
+		
 		</>
 	);
 }

@@ -10,10 +10,12 @@ export default function ProjectOwner() {
 	const Uesername = useAuth.user.username;
 	useEffect(() => {
 		// const pull =setInterval(() => {
-			axios.get("http://localhost:3002/project").then(({ data }) => {
-				setporjectData(data);
-				console.log(data);
-			});
+			axios
+				.get("https://infograph-back.herokuapp.com/project")
+				.then(({ data }) => {
+					setporjectData(data);
+					console.log("asdasdasd", data);
+				});
 		// }, 30000);
 		// return () => {
 		// 	clearInterval(pull);
