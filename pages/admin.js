@@ -4,7 +4,7 @@ import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../components/auth/context";
 import Card from "../components/Card";
 import Charts from "../components/charts";
-
+import Auth from "../components/auth/auth";
 export default function Admin() {
 	const useAuth = useContext(AuthContext);
 	const Uesername = useAuth.user.username;
@@ -19,7 +19,7 @@ export default function Admin() {
 				setporjectData(data);
 				console.log(data);
 			});
-		// }, 1000);
+		// }, 30000);
 		// return () => {
 		// 	clearInterval(pull);
 		// };
@@ -49,47 +49,51 @@ export default function Admin() {
 				console.log(data);
 				setporjectData([...porjectData, data]);
 			});
+
+			// location.reload();
 	};
 
 	return (
-		<div className="admin">
-			<div className="adminCards">
-				{porjectData.map((project, index) => {
-					return (
-						<div key={index} className="countiuation">
-							<Card
-								projectName={project.projectName}
-								userName={project.userName}
-								projectDesc={project.projectDesc}
-								projectSector={project.projectSector}
-								statusOfFunding={project.statusOfFunding}
-								numberOfEmloyees={project.numberOfEmloyees}
-							/>
+		<Auth capability={"delete"}>
+			<div className="admin">
+				<div className="adminCards">
+					{porjectData.map((project, index) => {
+						return (
+							<div key={index} className="countiuation">
+								<Card
+									projectName={project.projectName}
+									userName={project.userName}
+									projectDesc={project.projectDesc}
+									projectSector={project.projectSector}
+									statusOfFunding={project.statusOfFunding}
+									numberOfEmloyees={project.numberOfEmloyees}
+								/>
 
-							<select
-								name="projectSector"
-								value={project.statusOfFunding}
-								onChange={(e) =>
-									updateProject({
-										...project,
-										statusOfFunding: e.target.value,
-									})
-								}
-							>
-								<option value="Pending">Pending</option>
-								<option value="approved">approved</option>
-								<option value="rejected">rejected</option>
-							</select>
-							<button onClick={() => deleteProject(project)}>
-								Delete
-							</button>
-						</div>
-					);
-				})}
+								<select
+									name="projectSector"
+									value={project.statusOfFunding}
+									onChange={(e) =>
+										updateProject({
+											...project,
+											statusOfFunding: e.target.value,
+										})
+									}
+								>
+									<option value="Pending">Pending</option>
+									<option value="approved">approved</option>
+									<option value="rejected">rejected</option>
+								</select>
+								<button onClick={() => deleteProject(project)}>
+									Delete
+								</button>
+							</div>
+						);
+					})}
+				</div>
+				<div>
+					<Charts />
+				</div>
 			</div>
-			<div >
-				<Charts />
-			</div>
-		</div>
+		</Auth>
 	);
 }

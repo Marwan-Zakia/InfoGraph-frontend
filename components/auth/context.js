@@ -48,7 +48,6 @@ export default class AuthProvider extends React.Component {
 					data = response.data;
 					this.setState({
 						token: data.token,
-
 						isLogged: true,
 						user: {
 							email: data.email,
@@ -67,18 +66,19 @@ export default class AuthProvider extends React.Component {
 		}
 	};
 	logout = () => {
+		cookie.remove("infoauth", { path: "/" });
 		this.logInstate(false, null, {}, null);
 	};
 	logInstate = (isLogged, token, user, username) => {
 		console.log("token", token);
-		cookie.save("infoauth", token);
+		cookie.save("infoauth", token, { path: "/" });
 		this.setState({
 			isLogged: isLogged,
 			token: token,
 			user: user,
 			username: username,
 		});
-		return user;
+		// return user;
 	};
 
 	vailidateToken = (token) => {

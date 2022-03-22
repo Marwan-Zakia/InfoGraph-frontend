@@ -2,9 +2,11 @@
 import { useContext } from "react";
 import { AuthContext } from "../components/auth/context";
 import Link from "next/link";
+import Auth from "./auth/auth";
+import { If, Then } from "react-if";
 export default function Header() {
-    const useAuth = useContext(AuthContext);
-	
+	const useAuth = useContext(AuthContext);
+	console.log("sa", useAuth.isLogged);
 	return (
 		<>
 			<header className="upper">
@@ -35,21 +37,31 @@ export default function Header() {
 				<Link href="#">Pages</Link>
 				<Link href="#">Feature</Link>
 				<Link href="#">Contact</Link>
-				<Link href="/login">Login</Link>
 				<Link href="/admin">Admin</Link>
 				<Link href="/porjects">porjects</Link>
-				<Link href="/signup">Signup</Link>
+				<If condition={!useAuth.isLogged}>
+					<Then>
+						<Link href="/login">Login</Link>
+					</Then>
+				</If>
+
+				<If condition={!useAuth.isLogged}>
+					<Then>
+						<Link href="/signup">Signup</Link>
+					</Then>
+				</If>
 				<Link href="#">🔍</Link>
-				<button
-					onClick={() => {
-						location.reload();
-						useAuth.logout;
-					}}
-				>
-					log out
-				</button>
+				<Auth>
+					<button
+						onClick={() => {
+							location.reload();
+							useAuth.logout();
+						}}
+					>
+						log out
+					</button>
+				</Auth>
 			</header>
-		
 		</>
 	);
 }

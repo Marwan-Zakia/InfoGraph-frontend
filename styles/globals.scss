@@ -40,10 +40,12 @@
 	height: 40vh;
 	background-image: url("https://www.santander.com/content/dam/santander-com/es/stories/cabecera/2021/educacionfinanciera/im-storie-fondo-inversion-desktop.jpg");
 	display: flex;
-	color: #748080;
+	color: #020202;
 	flex-direction: column;
 	text-align: left;
 	justify-content: center;
+	font-family:Segoe UI;
+	font-size: 1.5rem;
 }
 
 .container {
@@ -290,4 +292,13 @@
 
 }
 
+
+footer{
+	height: 100px;
+	width: 100%;
+	background-color: #a1a1a1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
 	
