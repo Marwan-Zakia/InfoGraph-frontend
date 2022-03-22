@@ -43,8 +43,7 @@ export default function Projects() {
 	};
 	console.log(formdata);
 	return (
-		<div>
-			<h1>Projects</h1>
+		<div className="porjects">
 			<form onSubmit={handleSubmit}>
 				<input
 					type="text"
@@ -77,59 +76,50 @@ export default function Projects() {
 					<option value="Waste">Waste</option>
 					<option value="Other">Other</option>
 				</select>
-
-				<br />
-				<input
-					type="radio"
-					name="numberOfEmloyees"
-					value={"10-50"}
-					checked={formdata.numberOfEmloyees === "10-50"}
-					onChange={handleChange}
-				/>
-				<label htmlFor="10-50">Emloyees : 10-50</label>
-				<br />
-				<br />
-				<input
-					type="radio"
-					name="numberOfEmloyees"
-					value={"50-200"}
-					checked={formdata.numberOfEmloyees === "50-200"}
-					onChange={handleChange}
-				/>
-				<label htmlFor="50-200">Emloyees:50-200</label>
-				<br />
-				<br />
-				<input
-					type="radio"
-					name="numberOfEmloyees"
-					value={"200-1000"}
-					checked={formdata.numberOfEmloyees === "200-1000"}
-					onChange={handleChange}
-				/>
-				<label htmlFor="200-1000"> Emloyees : 200-1000</label>
-				<br />
-				<br />
-				<input
-					type="radio"
-					name="numberOfEmloyees"
-					value={"1000-more"}
-					onChange={handleChange}
-					checked={formdata.numberOfEmloyees === "1000-more"}
-				/>
-				<label htmlFor="1000-more"> Emloyees : 1000-more...</label>
-				<br />
-
+				<div className="radio">
+					<input
+						type="radio"
+						name="numberOfEmloyees"
+						value={"10-50"}
+						checked={formdata.numberOfEmloyees === "10-50"}
+						onChange={handleChange}
+					/>
+					<label htmlFor="10-50">Emloyees : 10-50</label>
+					<br />
+					<input
+						type="radio"
+						name="numberOfEmloyees"
+						value={"50-200"}
+						checked={formdata.numberOfEmloyees === "50-200"}
+						onChange={handleChange}
+					/>
+					<label htmlFor="50-200">Emloyees:50-200</label>
+					<br />
+					<input
+						type="radio"
+						name="numberOfEmloyees"
+						value={"200-1000"}
+						checked={formdata.numberOfEmloyees === "200-1000"}
+						onChange={handleChange}
+					/>
+					<label htmlFor="200-1000"> Emloyees : 200-1000</label>
+					<br />
+					<input
+						type="radio"
+						name="numberOfEmloyees"
+						value={"1000-more"}
+						onChange={handleChange}
+						checked={formdata.numberOfEmloyees === "1000-more"}
+					/>
+					<label htmlFor="1000-more"> Emloyees : 1000-more...</label>
+					<br />
+				</div>
 				<button type="submit">Submit</button>
 			</form>
 
-<div>
-
-<ProjectOwner/>
-    
-</div>
-
-
-
+			<div>
+				<ProjectOwner />
+			</div>
 		</div>
 	);
 }

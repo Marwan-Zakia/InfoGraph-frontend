@@ -2,6 +2,7 @@
 import axios from "axios";
 import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../components/auth/context";
+import Card from "../components/Card";
 import Charts from "../components/charts";
 
 export default function Admin() {
@@ -12,10 +13,12 @@ export default function Admin() {
 
 	useEffect(() => {
 		// const pull = setInterval(() => {
-		axios.get("https://infograph-back.herokuapp.com/project").then(({ data }) => {
-			setporjectData(data);
-			console.log(data);
-		});
+		axios
+			.get("https://infograph-back.herokuapp.com/project")
+			.then(({ data }) => {
+				setporjectData(data);
+				console.log(data);
+			});
 		// }, 1000);
 		// return () => {
 		// 	clearInterval(pull);
@@ -38,7 +41,10 @@ export default function Admin() {
 	const updateProject = (project) => {
 		const id = project.id;
 		axios
-			.put(`https://infograph-back.herokuapp.com/project/${id}`, project)
+			.put(
+				`https://infograph-back.herokuapp.com/project/${id}`,
+				project,
+			)
 			.then(({ data }) => {
 				console.log(data);
 				setporjectData([...porjectData, data]);
@@ -46,41 +52,44 @@ export default function Admin() {
 	};
 
 	return (
-		<div>
-			<h1>Admin</h1>
+		<div className="admin">
+			<div className="adminCards">
+				{porjectData.map((project, index) => {
+					return (
+						<div key={index} className="countiuation">
+							<Card
+								projectName={project.projectName}
+								userName={project.userName}
+								projectDesc={project.projectDesc}
+								projectSector={project.projectSector}
+								statusOfFunding={project.statusOfFunding}
+								numberOfEmloyees={project.numberOfEmloyees}
+							/>
 
-			{porjectData.map((project, index) => {
-				return (
-					<div key={index}>
-						<p>{project.projectName}</p>
-						<p>{project.projectDesc}</p>
-						<p>{project.projectSector}</p>
-						<p>
-						
-							Current status of funding : {project.statusOfFunding} 
-						</p>
-						<p>{project.numberOfEmloyees}</p>
-						<button onClick={() => deleteProject(project)}>
-							Delete
-						</button>
-						<select
-							name="projectSector"
-							value={project.statusOfFunding}
-							onChange={(e) =>
-								updateProject({
-									...project,
-									statusOfFunding: e.target.value,
-								})
-							}
-						>
-							<option value="Pending">Pending</option>
-							<option value="approved">approved</option>
-							<option value="rejected">rejected</option>
-						</select>
-					</div>
-				);
-			})}
-			<Charts />
+							<select
+								name="projectSector"
+								value={project.statusOfFunding}
+								onChange={(e) =>
+									updateProject({
+										...project,
+										statusOfFunding: e.target.value,
+									})
+								}
+							>
+								<option value="Pending">Pending</option>
+								<option value="approved">approved</option>
+								<option value="rejected">rejected</option>
+							</select>
+							<button onClick={() => deleteProject(project)}>
+								Delete
+							</button>
+						</div>
+					);
+				})}
+			</div>
+			<div >
+				<Charts />
+			</div>
 		</div>
 	);
 }

@@ -156,16 +156,42 @@ export default function Charts() {
 	}, []);
 
 	return (
-		<div >
-			<div style={{ height: "500px", width: "500px" }}>
-				<Bar options={options} data={states} />
-			</div>
-			<div style={{ height: "500px", width: "500px" }}>
-				<Bar options={options2} data={Pending} />
-			</div>
-			<div style={{ height: "500px", width: "500px" }}>
-				<Bar options={options2} data={rejected} />
-			</div>
+		<div className="charts">
+			<Bar
+				style={{
+					height: "350px",
+					width: "350px",
+					border: "1px solid #000000",
+					borderRadius: "5px",
+					margin: "10px",
+				}}
+				options={options}
+				data={states}
+			/>
+
+			<Bar
+				style={{
+					height: "350px",
+					width: "350px",
+					border: "1px solid #000000",
+					borderRadius: "5px",
+					margin: "10px",
+				}}
+				options={options2}
+				data={Pending}
+			/>
+
+			<Bar
+				style={{
+					height: "350px",
+					width: "350px",
+					border: "1px solid #000000",
+					borderRadius: "5px",
+					margin: "10px",
+				}}
+				options={options2}
+				data={rejected}
+			/>
 		</div>
 	);
 }
