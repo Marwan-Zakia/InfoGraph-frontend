@@ -2,6 +2,7 @@
 import axios from "axios";
 import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../components/auth/context";
+import Charts from "../components/charts";
 
 export default function Admin() {
 	const useAuth = useContext(AuthContext);
@@ -40,7 +41,7 @@ export default function Admin() {
 			.put(`http://localhost:3002/project/${id}`, project)
 			.then(({ data }) => {
 				console.log(data);
-				setporjectData([...porjectData, ...data]);
+				setporjectData([...porjectData, data]);
 			});
 	};
 
@@ -54,7 +55,10 @@ export default function Admin() {
 						<p>{project.projectName}</p>
 						<p>{project.projectDesc}</p>
 						<p>{project.projectSector}</p>
-						<p>{project.statusOfFunding}</p>
+						<p>
+						
+							Current status of funding : {project.statusOfFunding} 
+						</p>
 						<p>{project.numberOfEmloyees}</p>
 						<button onClick={() => deleteProject(project)}>
 							Delete
@@ -70,13 +74,13 @@ export default function Admin() {
 							}
 						>
 							<option value="Pending">Pending</option>
-							<option value="approved,">approved,</option>
+							<option value="approved">approved</option>
 							<option value="rejected">rejected</option>
-							<option value="Funded">Funded</option>
 						</select>
 					</div>
 				);
 			})}
+			<Charts />
 		</div>
 	);
 }

@@ -9,15 +9,15 @@ export default function ProjectOwner() {
 	const useAuth = useContext(AuthContext);
 	const Uesername = useAuth.user.username;
 	useEffect(() => {
-		const pull =setInterval(() => {
+		// const pull =setInterval(() => {
 			axios.get("http://localhost:3002/project").then(({ data }) => {
 				setporjectData(data);
 				console.log(data);
 			});
-		}, 30000);
-		return () => {
-			clearInterval(pull);
-		};
+		// }, 30000);
+		// return () => {
+		// 	clearInterval(pull);
+		// };
 	}, []);
 
 	const UserProjects = porjectData.filter(
