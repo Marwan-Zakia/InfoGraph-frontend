@@ -8,7 +8,7 @@ import Card from "./Card";
 export default function ProjectOwner() {
 	const [porjectData, setporjectData] = useState([]);
 	const useAuth = useContext(AuthContext);
-	const Uesername = useAuth.user.username;
+	const Uesername = useAuth?.user?.username;
 	useEffect(() => {
 		// const pull =setInterval(() => {
 		axios

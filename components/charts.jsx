@@ -153,7 +153,7 @@ export default function Charts() {
 					],
 				});
 			});
-	}, [Pending, rejected, states]);
+	},[]);
 
 	return (
 		<div className="charts">

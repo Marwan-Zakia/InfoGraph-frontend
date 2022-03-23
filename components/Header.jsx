@@ -6,7 +6,7 @@ import Auth from "./auth/auth";
 import { If, Then } from "react-if";
 export default function Header() {
 	const useAuth = useContext(AuthContext);
-	console.log("sa", useAuth.isLogged);
+
 	return (
 		<>
 			<header className="upper">
