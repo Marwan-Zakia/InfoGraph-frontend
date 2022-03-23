@@ -22,9 +22,3 @@ function MyApp({ Component, pageProps }) {
 }
 
 export default MyApp;
-/* 
-Marwanamir
-johnandrew1150@gmail.com
-johnandrew1150@gmail.com
-
-*/
