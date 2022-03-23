@@ -34,6 +34,15 @@ export default function Admin() {
 			clearInterval(pull);
 		};
 	}, []);
+	useEffect(() => {
+		axios
+			.get("https://infograph-back.herokuapp.com/project")
+			.then(({ data }) => {
+				setporjectData(data);
+				console.log(data);
+			});
+	}, []);
+	
 
 	const deleteProject = (project) => {
 		const id = project.id;

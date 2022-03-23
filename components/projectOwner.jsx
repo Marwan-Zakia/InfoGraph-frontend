@@ -20,12 +20,20 @@ export default function ProjectOwner() {
 			.get("https://infograph-back.herokuapp.com/project")
 			.then(({ data }) => {
 				setporjectData(data);
-				console.log("asdasdasd", data);
+			
 			});
-		}, 30000);
+		}, 15000);
 		return () => {
 			clearInterval(pull);
 		};
+	}, []);
+	useEffect(() => {
+	axios
+		.get("https://infograph-back.herokuapp.com/project")
+		.then(({ data }) => {
+			setporjectData(data);
+			
+		});
 	}, []);
 
 	const UserProjects = porjectData.filter(

@@ -21,7 +21,10 @@ export default function Card({
 	numberOfEmloyees,
 }) {
 	return (
-		<div className="card">
+		<div
+			className="card"
+			
+		>
 			<h1 className="header">
 				Project: {projectName} and was created by {userName}
 			</h1>
