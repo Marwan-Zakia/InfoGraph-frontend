@@ -6,6 +6,13 @@ import { If,Else,Then } from "react-if";
 import { AuthContext } from "../components/auth/context";
 import ProjectOwner from "../components/projectOwner";
 
+/**
+ * 
+ * @returns {Component} Projects page  with a form to add a new project and a list of projects
+ * 
+ */
+
+
 export default function Projects() {
 	const useAuth = useContext(AuthContext);
 	const [formdata, setformdata] = useState({

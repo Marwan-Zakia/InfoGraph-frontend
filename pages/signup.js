@@ -9,7 +9,9 @@ import Swal from "sweetalert2";
 import Auth from "../components/auth/auth";
 import Router from "next/router";
 import Link from "next/link";
-
+/**
+ * * a form to register the user and send the data to the api and moves the user to the login page
+ */
 class Signup extends Component {
 	static contextType = AuthContext;
 	constructor(props) {

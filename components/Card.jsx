@@ -1,5 +1,17 @@
 /** @format */
 
+
+/**
+ * 
+ * @param {userName} 
+ * @param {projectName} 
+ * @param {projectDesc} 
+ * @param {projectSector} 
+ * @param {statusOfFunding} 
+ * @param {	numberOfEmloyees}
+ * @returns  a card with the data passed in the parameters
+ * @can be called as @Card component
+ */
 export default function Card({
 	userName,
 	projectName,

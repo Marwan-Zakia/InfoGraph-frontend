@@ -7,7 +7,26 @@ import axios from "axios";
 import { createContext } from "react";
 
 export const AuthContext = createContext();
-
+/**
+ *
+ */
+/**
+ * @param {mothod} capability
+ * @returns {boolean}
+ * @description checks if the user has the capability
+ * @param {mothod} login  - login method  - allow user to login and saves the token in the cookies
+ * @param {mothod} logout - logout method - allow user to logout and deletes the token from the cookies
+ * @param {mothod} vailidateToken - validate the token with the same secret that came from the backend  and if the token is valid 
+ *  i call the logInstate with the data 
+ * @member {mothod} logInstate - sets the user login state so that the user can be logged in or logged 
+ * out i use it to either clear the user data in the logout mothed or to set the user data in the login mothed
+ * @param {boolean} isLogged - isLogged - checks if the user is is Logged in or not
+ * @param {object} user - user  - user object
+ * @member {mothod} onmount(componentDidMount) gets the cookie and validate the token if found
+ *
+ *
+ *
+ */
 export default class AuthProvider extends React.Component {
 	constructor(props) {
 		super(props);

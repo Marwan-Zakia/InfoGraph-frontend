@@ -5,6 +5,16 @@ import { AuthContext } from "../components/auth/context";
 import Card from "../components/Card";
 import Charts from "../components/charts";
 import Auth from "../components/auth/auth";
+
+/**
+ * 
+ * @returns {Component} Chart component and the card component with the porjects data 
+ * @function {useEffect} useEffect is used to fetch the data from the server evry 30 seconds
+ * @function {deleteProject}  @param {porject} deletes the project from the server
+ * @function {updateProject} @param {project} updates status of funding of project 
+ */
+
+
 export default function Admin() {
 	const useAuth = useContext(AuthContext);
 	const Uesername = useAuth.user.username;
@@ -12,17 +22,17 @@ export default function Admin() {
 	const [porjectData, setporjectData] = useState([]);
 
 	useEffect(() => {
-		// const pull = setInterval(() => {
+		const pull = setInterval(() => {
 		axios
 			.get("https://infograph-back.herokuapp.com/project")
 			.then(({ data }) => {
 				setporjectData(data);
 				console.log(data);
 			});
-		// }, 30000);
-		// return () => {
-		// 	clearInterval(pull);
-		// };
+		}, 30000);
+		return () => {
+			clearInterval(pull);
+		};
 	}, []);
 
 	const deleteProject = (project) => {
@@ -45,12 +55,9 @@ export default function Admin() {
 				`https://infograph-back.herokuapp.com/project/${id}`,
 				project,
 			)
-			.then(({ data }) => {
-				console.log(data);
-				setporjectData([...porjectData, data]);
-			});
+			.then(({ data }) => {	 location.reload();});
 
-			// location.reload();
+		
 	};
 
 	return (

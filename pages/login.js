@@ -12,6 +12,10 @@ import Auth from "../components/auth/auth";
 import Router from "next/router";
 import Link from "next/link";
 import superagent from "superagent";
+
+/**
+ * * a form to login the user and send the data to the api and uses the AuthContext to set the user as logged in
+ */
 export default class Login extends Component {
 	static contextType = AuthContext;
 	constructor(props) {

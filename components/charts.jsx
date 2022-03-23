@@ -19,42 +19,22 @@ ChartJS.register(
 	Tooltip,
 	Legend,
 );
-export const options = {
-	responsive: true,
-	plugins: {
-		legend: {
-			position: "top",
-		},
-		title: {
-			display: true,
-			text: "approved projects",
-		},
-	},
-};
-export const options2 = {
-	responsive: true,
-	plugins: {
-		legend: {
-			position: "top",
-		},
-		title: {
-			display: true,
-			text: "rejected projects",
-		},
-	},
-};
-export const options3 = {
-	responsive: true,
-	plugins: {
-		legend: {
-			position: "top",
-		},
-		title: {
-			display: true,
-			text: "Pending projects",
-		},
-	},
-};
+/**
+ * @component {Charts}
+ **  I used @param just to highlight the comments 
+ * @can be called as @Charts component 
+ @param {approved} function  to filter the data by approved and used it for lenght of array
+ @param {approvedProjectNames} function   to get the project names from approved array
+ @param {rejectedProject} function  to filter the data by rejected and used it for lenght of array
+ @param {rejectedProjectNames} function   to get the project names from rejected array
+ @param {PendingPorjects} function  to filter the data by pendingand used it for lenght of array
+ @param {pendingProjectNames} function   to get the project names from pending array
+ * @returns renders a charts with the data from the api
+
+ * 
+
+ */
+
 export default function Charts() {
 	const [states, setstates] = useState({
 		labels: [],
@@ -95,18 +75,12 @@ export default function Charts() {
 				const approved = data.filter(
 					(item) => item.statusOfFunding === "approved",
 				);
-				const approvedProjectStates = approved.map(
-					(item) => item.statusOfFunding,
-				);
 				const approvedProjectNames = approved.map(
 					(item) => item.projectName,
 				);
 
 				const rejectedProject = data.filter(
 					(item) => item.statusOfFunding === "rejected",
-				);
-				const rejectedProjectStates = rejectedProject.map(
-					(item) => item.statusOfFunding,
 				);
 				const rejectedProjectNames = rejectedProject.map(
 					(item) => item.projectName,
@@ -115,9 +89,7 @@ export default function Charts() {
 				const PendingPorjects = data.filter(
 					(item) => item.statusOfFunding === "Pending",
 				);
-				const PendingProjectStates = PendingPorjects.map(
-					(item) => item.statusOfFunding,
-				);
+
 				const PendingProjectNames = PendingPorjects.map(
 					(item) => item.projectName,
 				);
@@ -128,7 +100,7 @@ export default function Charts() {
 					datasets: [
 						{
 							...states.datasets[0],
-							data: [approvedProjectStates.length],
+							data: [approved.length],
 						},
 					],
 				});
@@ -138,7 +110,7 @@ export default function Charts() {
 					datasets: [
 						{
 							...Pending.datasets[0],
-							data: [PendingProjectStates.length],
+							data: [PendingPorjects.length],
 						},
 					],
 				});
@@ -148,12 +120,12 @@ export default function Charts() {
 					datasets: [
 						{
 							...rejected.datasets[0],
-							data: [rejectedProjectStates.length],
+							data: [rejectedProject.length],
 						},
 					],
 				});
 			});
-	},[]);
+	}, []);
 
 	return (
 		<div className="charts">
@@ -195,3 +167,40 @@ export default function Charts() {
 		</div>
 	);
 }
+
+export const options = {
+	responsive: true,
+	plugins: {
+		legend: {
+			position: "top",
+		},
+		title: {
+			display: true,
+			text: "approved projects",
+		},
+	},
+};
+export const options2 = {
+	responsive: true,
+	plugins: {
+		legend: {
+			position: "top",
+		},
+		title: {
+			display: true,
+			text: "rejected projects",
+		},
+	},
+};
+export const options3 = {
+	responsive: true,
+	plugins: {
+		legend: {
+			position: "top",
+		},
+		title: {
+			display: true,
+			text: "Pending projects",
+		},
+	},
+};
